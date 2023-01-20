@@ -14,11 +14,8 @@ let user = createSlice({   // state 하나를 slice라고 부름
     }
 })
 
-
-
-
-
    // redux의 state를 변경: state를 수정하는 함수를 만들고 원할 때 그 함수 실행해달라고 store.js에 요청
-   // 만든 함수 export 
-export let {changeName} = user.actions   // state 변경 함수들이 남음
+   // 다른 곳에서 state변경 할 수 있도록 만든 함수 export 
+export let {changeName ,increase} = user.actions   // state 변경 함수들이 남음
+
 export default user;

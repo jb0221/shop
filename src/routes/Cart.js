@@ -1,7 +1,10 @@
 import userEvent from '@testing-library/user-event';
 import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeName, increase } from './../store/userSlice';
+
+import { changeName, increase } from '../store/userSlice';
+// 함수는 import state는 useSelector
+
 function Cart (){ 
 
     // Redux를 사용하면 컴포넌트들 간의 props 없이 state 공유 가능 react version이 18.1 이상이어야함 (package.json)   
@@ -11,14 +14,16 @@ function Cart (){
     //let user = useSelector((state)=>{return state})      // ReduxSto./re 가져와줌, Redux store에 있는 모든 state 가져옴 return state.user
    
     let cartItem = useSelector((state)=>{return state.cartItem});
-    let user = useSelector((state)=>{return state.user});
+
+    //let user = useSelector((state)=>{return state.user});
+    let state = useSelector((state)=>state);
     let dispatch =useDispatch();
     return(
         <div>
-            {user} 의 장바구니
-            <button  onClick={()=>{
-                dispatch(increase());
-            }}>버튼</button>
+            <h5>{state.user.name}{state.user.age} 의 장바구니</h5>
+            <button onClick={()=>{ 
+                dispatch(increase(100));
+            }}>버튼</button> 
             <Table>
                 <thead>
                     <tr>
