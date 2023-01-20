@@ -3,6 +3,7 @@ import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { changeName, increase } from '../store/userSlice';
+import {chnageCart} from './../store';
 // 함수는 import state는 useSelector
 
 function Cart (){ 
@@ -43,7 +44,7 @@ function Cart (){
                                 <td>{item.count}</td>
                                 <td>
                                     <button onClick={()=>{ 
-                                        dispatch(changeName());
+                                        dispatch(chnageCart(item.id));
                                     }}>+</button>
                                 </td>
                                 </tr>
