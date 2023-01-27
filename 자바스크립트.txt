@@ -1,0 +1,100 @@
+@@중급자바스크립트 
+호이스팅
+스코프 내부 어디서든 변수선언은 최상위에서 선언된 것처럼 행동
+
+Object.assign() : 객체 복제 Object.assign({}, user)
+Object.keys() : 객체 키를 배열로 반환 
+Object.values(); 객체 값을 배열로 반환
+Object.entries(); 키와  값을 배열로 반환 [ ["name":"mike] , ["age":"30] ]
+Object.fromEntries(); 키/값 배열을 객체로 변환 
+
+arr.reduce(); 인수를 함수로 받음
+
+destructuring  구조분해할당
+rest parameter  나머지 매개변수[...]
+
+클로저- 모르겠음, 생성자함수
+call apply bind  - this 값을 지정, apply는 배열만 매개변수
+상속 프로토타입
+__proto__ : 자식
+prototype : 부모 생성자로 만들어진 인스턴스에 사용  instanceof
+class
+오버라이딩 오버로딩 super
+오버라이딩 같은 이름이면 덮어쓰는데 부모꺼를 쓰고 싶으면 super를 씀
+클래스의 생성자는 {}를 먼저 만들고 return 하는데 상속 받아서 쓰는 클래스의
+생성자는 이걸 생략 그래서 constructor(){} 를 쓰고 싶으면 super()를 먼저 써야함 파라미터 잊지 말기
+자식 클래스의 생성자가 없으면 부모꺼를 있다고 생각함
+promise (resolve, reject) then, catch, finally
+promise.all()이 속도는 빠른데 하나 실패하면 그 뒤에 실행 안 해서 보여주거나 안 보여줄 때 사용 - 병렬
+async, await - await은 async 함수 내부에서만 사용 가능 실패한 경우에는 try,catch
+generator 함수의 실행을 중간에 멈췄다가 다시 재개function 앞에 * - 값을 미리 만들어두지 않음
+next(), return(), throw()
+Symbol();
+for of = iterator. for in 
+promise.race - 프로미스 중에 가장 먼저 완료된 결과값으로 이행
+promise.any - 프로미스 중에 가장 먼저 이행된 객체 반환
+?? 는 null 이나 undefined 
+num = num || 3
+num ||= 3 랑 동일
+약한 참조는 가비지 컬렉터 대상 WeakRef
+
+@@리액트
+state, 
+props 넘겨오는 props로 쓰지만 하나만 받으면 function Hello({age}){ ~~ } 요렇게 쓸 수 있음 
+exact 안 쓴다고
+다이나믹 url :
+useParams();	- react-router-dom
+rest api
+json-server
+useEffect(함수,[]) 어떤 값의 상태가 변했을 때 실행
+fetch, axios	
+custom hook - use로 시작 useFetch -- ajax 데이터 가져오는 거 method:  PUT(update), GET, DELETE, POST(create)
+useRef    사용법: const korRef = useRef(null)  <input ref={korRef}> 
+ useEffect 재랜더링 시기 
+Link to  / JSON.stringify. JSON.parse
+useHistory(); - react-router = 페이지 이동
+리액트에 typescript 적용하는 법 : npm install typescript @types/node @types/react @types/react-dom @tpyes/jest @types/react-router-dom
+.js - > .ts  jsx->.tsx  interface ?표를 붙이면 꼭 있어도 되는 변수 아니라는 뜻
+redux state 관리 툴
+
+@@타입스크립트
+자바스크립트- 동적언어 / 런타임에 타입 결정/ 오류발견
+자바, 타입스크립트 - 정적언어/ 컴파일 타임에 타입 결정 / 오류발견
+제네릭 (자바, C언어 사용), any 타입의 문제점, 제네릭 화살표 함수
+let a:number[] =[1,2,3], let a2 = Array<number> = [1,2,3]
+튜플, tuple  let b = [1 , 'zzz']
+function sayHello (): void { console.log("void")} 
+enum ? 양방향 맵핑 
+인터페이스 - readonly 속성
+type Score = 'a' | 'b' let grade = Score
+implement extends interface
+npm install typescript @types/node @types/react @types/react-dom @types/jest @types/react-router-dom
+타입스크립트 오버로드 
+리터럴 유니온 교차 타입 
+함수 클래스 제네릭, 유틸리티 타입 
+타입스크립트 접근제한자 public(자식클래스, 클래스인스턴스 모두 접근 가능), #private, protected(자식만), static *자바개념유사
+type keyof
+유틸리티 타입 : interface 쓸 때 전체 키를 안 쓸 거면 Partial 사용해  - Required 는 모든 property 필수 , readonly
+Record<T,K> Pick<T,K> Omit<T,K> Exclude, nonnullable, 
+
+
+@@ jest 
+리액트를 만든 facebook에서 선보인 자바스크립트 테스팅도구
+npm install jest --save-dev package.json의 "Scripts": { "test" : "jest"} 이렇게
+Matchers  - expect, toBe, toEqual, toStrictEqual, toBeNull, toBeUndefined,toBeTruthy, toBeFalsy
+비동기코드테스트
+Mock function   - jest.fn() / jest.mock();
+정규표현식 contain, filter, new Error(); throw new error / async-await 
+초기화 beforeEach()=>{}, afterEach() beforeAll, afterAll, describe는 테스트 할 항목끼리 묶을 수 있음 depth
+하나만 하고 싶으면 .only 건너뛰고 싶으면 .skip
+임시로 어떤 값을 내려준다고 하고 테스트 하고 싶을 때는 .mockReturnValueOnce(20) - 그럼 값 20 받았다 치고
+비동기 함수는 .mockResolvedValue( {name : 'mike' } ) 이런 식으로 내려주면 됨 
+배열은 toBe가 아니고 toStrictEqual 사용4
+toBeCalled(), 한 번 이상 호출? tBeCalledTimes(4) 정확히 4번 호출? toBeCalledWith(10,20), lastCalledWith
+
+
+@@next.js 
+https://github.com/coding-angma/nextjs-tutorial/tree/lesson/2 깃
+Nuxt는 뷰 기반 Next는 리액트 기반 Nest는 백엔드 기반 //  웹펙과 바벨
+
+ 
