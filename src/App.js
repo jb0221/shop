@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button,Navbar,Container,Nav} from 'react-bootstrap';
 import { createContext,useState } from 'react';
 import data from './data.js';
-import {Routes, Route,Link, useNavigate, Outlet } from 'react-router-dom';
+import {Routes, Route,Link, useNavigate, Outlet,useHistory } from 'react-router-dom';
 import Detail from './routes/Detail';
 import axios from 'axios';
 import Cart from './routes/Cart';
@@ -21,6 +21,7 @@ function App() {
   let navigate = useNavigate();
   let [loading,setLoading] = useState(false);
   let [재고] = useState([10,11,12]);
+
   
   return (
   
@@ -154,9 +155,15 @@ function About (){
 }
 function Card (props){
 
+  let navigate = useNavigate();
+ 
+
   return(
     
-        <div className='col-md-4'>
+        <div className='col-md-4' onClick={()=>{
+      
+            navigate(`/detail/${props.shoes.id}`)
+        }}>
             <img src={"https://codingapple1.github.io/shop/shoes"+(props.i+1)+".jpg"} width="70%" />
             <h4>{props.shoes.title}</h4>
             <p>{props.shoes.price}</p>

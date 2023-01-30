@@ -98,6 +98,7 @@ function Detail (props){
                     <p>{props.shoes[id].content}</p>
                     <p>{props.shoes[id].price}</p>
                     <button className="btn btn-danger">주문하기</button>
+                    <button className="btn btn-danger">장바구니</button>
                 </div>
             </div>
 

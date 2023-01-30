@@ -97,4 +97,9 @@ toBeCalled(), 한 번 이상 호출? tBeCalledTimes(4) 정확히 4번 호출? to
 https://github.com/coding-angma/nextjs-tutorial/tree/lesson/2 깃
 Nuxt는 뷰 기반 Next는 리액트 기반 Nest는 백엔드 기반 //  웹펙과 바벨
 
+
+@@blind
+npm install react-router-dom
+
+router 쓰려는데 안 써져서  BrowserRouter로 감싸줘야함
  
